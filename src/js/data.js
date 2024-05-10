@@ -1,5 +1,5 @@
 fetch(
-  'https://raw.githubusercontent.com/Rinki-S/wut-to-eat/tree/main/src/data/restaurants.csv'
+  'https://raw.githubusercontent.com/Rinki-S/wut-to-eat/main/src/data/restaurants.csv'
 )
   .then((response) => response.text())
   .then((data) => {
