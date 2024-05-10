@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://fmj.asrvd.me/🍜" />
     <link href="src/css/output.css" rel="stylesheet" />
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -20,6 +21,7 @@
     <title>WIP</title>
   </head>
   <body id="body" class="ml-[10vw] mr-[10vw] h-fit">
+    <!-- ^^^^^^^^^^ Step Indicator Start ^^^^^^^^^^ -->
     <div
       id="stepIndicator"
       class="fixed left-0 top-1/2 ml-5 flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
@@ -41,7 +43,10 @@
         class="step flex h-2 w-2 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
     </div>
+    <!-- vvvvvvvvvv Step Indicator End vvvvvvvvvv -->
+    <!-- ^^^^^^^^^^ Step Zero Start ^^^^^^^^^^ -->
     <div class="flex h-dvh flex-col justify-center">
+      <!-- ^^^^^^^^^^ Welcome Text Start ^^^^^^^^^^ -->
       <div class="space-y-2">
         <h1
           class="w-fit text-4xl transition-all duration-200 ease-in-out hover:font-bold"
@@ -55,6 +60,8 @@
           今天打算吃什么?
         </h1>
       </div>
+      <!-- vvvvvvvvvv Welcome Text End vvvvvvvvvv -->
+      <!-- ^^^^^^^^^^ Start Button Start ^^^^^^^^^^ -->
       <button
         id="startButton"
         type="button"
@@ -64,23 +71,29 @@
         <i class="ph-bold ph-sparkle text-sm"></i>
         点我来决定!
       </button>
+      <!-- vvvvvvvvvv Start Button End vvvvvvvvvv -->
     </div>
+    <!-- vvvvvvvvvv Step Zero End vvvvvvvvvv -->
+    <!-- ^^^^^^^^^^ Selection Process Field Start ^^^^^^^^^^ -->
     <div
       id="selectionProcessField"
-      class="flex hidden h-dvh flex-col items-center space-y-8"
+      class="flex hidden h-auto min-h-dvh flex-col items-center space-y-8"
     >
+      <!-- ^^^^^^^^^^ Step One Start ^^^^^^^^^^ -->
       <div id="selectionStepOne" class="hidden">
+        <!-- ^^^^^^^^^^ Step One Content Start ^^^^^^^^^^ -->
         <div
           class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
         >
-          <div class="ml-2 mt-2 grid space-y-2">
+          <!-- ^^^^^^^^^^ Step One Radio Start ^^^^^^^^^^ -->
+          <div id="selectionStepOneRadio" class="ml-2 mt-2 grid space-y-2">
             <div class="relative flex items-start">
               <div class="mt-1 flex h-5 items-center">
                 <input
                   id="hs-radio-random"
                   name="hs-radio-with-description"
                   type="radio"
-                  onclick="changeRadioChecked('hs-radio-random')"
+                  value="random"
                   class="primary rounded-full border-gray-200 text-blue-600 focus:ring-blue-500"
                   aria-describedby="hs-radio-delete-description"
                 />
@@ -102,7 +115,7 @@
                   id="hs-radio-filter"
                   name="hs-radio-with-description"
                   type="radio"
-                  onclick="changeRadioChecked('hs-radio-filter')"
+                  value="filter"
                   class="rounded-full border-gray-200 text-blue-600 focus:ring-blue-500"
                   aria-describedby="hs-radio-archive-description"
                 />
@@ -119,33 +132,154 @@
               </label>
             </div>
           </div>
+          <!-- vvvvvvvvvv Step One Radio End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Step One Confirm Button Start ^^^^^^^^^^ -->
           <span class="mb-2 ml-2 space-x-4">
             <button
               id="selectionStepOneNext"
               type="button"
-              onclick="showSelection('selectionStepOneNext', 'selectionStepRandomResult'); stepSwitch(3);"
+              onclick="stepOneSelection('selectionStepOneRadio'); stepSwitch(3);"
               class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-right"></i>
               前往下一步
             </button>
           </span>
+          <!-- vvvvvvvvvv Step One Confirm Button End vvvvvvvvvv -->
+        </div>
+        <!-- vvvvvvvvvv Step One Content End vvvvvvvvvv -->
+      </div>
+      <!-- vvvvvvvvvv Step One End vvvvvvvvvv -->
+      <!-- ^^^^^^^^^^ Step Filter Start ^^^^^^^^^^ -->
+      <div id="selectionStepFilter" class="hidden">
+        <div
+          class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
+        >
+          <div class="space-y-2">
+            <h2 class="text-2xl font-semibold text-gray-800">筛选结果</h2>
+          </div>
         </div>
       </div>
+      <!-- vvvvvvvvvv Step Filter End vvvvvvvvvv -->
+      <!-- ^^^^^^^^^^ Step Random Result Start ^^^^^^^^^^ -->
       <div id="selectionStepRandomResult" class="hidden">
+        <!-- ^^^^^^^^^^ Step Random Result Content Start ^^^^^^^^^^ -->
         <div
           class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
         >
           <div class="space-y-2">
             <h2 class="text-2xl font-semibold text-gray-800">随机结果</h2>
           </div>
+          <!-- ^^^^^^^^^^ Random Result Table Start ^^^^^^^^^^ -->
+          <div class="flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+              <div class="inline-block min-w-full p-1.5 align-middle">
+                <div class="overflow-hidden">
+                  <table
+                    id="stepRandomTable"
+                    class="min-w-full divide-y divide-gray-200"
+                  >
+                    <thead></thead>
+                    <tbody class="divide-y divide-gray-200">
+                      <tr>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-800"
+                        >
+                          John Brown
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          45
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          New York No. 1 Lake Park
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-end text-sm font-medium"
+                        >
+                          <button
+                            type="button"
+                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-800"
+                        >
+                          Jim Green
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          27
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          London No. 1 Lake Park
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-end text-sm font-medium"
+                        >
+                          <button
+                            type="button"
+                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-800"
+                        >
+                          Joe Black
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          31
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-sm text-gray-800"
+                        >
+                          Sidney No. 1 Lake Park
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-6 py-4 text-end text-sm font-medium"
+                        >
+                          <button
+                            type="button"
+                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- vvvvvvvvvv Random Result Table End vvvvvvvvvv -->
         </div>
+        <!-- vvvvvvvvvv Step Random Result Content End vvvvvvvvvv -->
       </div>
+      <!-- vvvvvvvvvv Step Random Result End vvvvvvvvvv -->
     </div>
+    <!-- vvvvvvvvvv Selection Process Field End vvvvvvvvvv -->
     <script src="./node_modules/preline/dist/preline.js"></script>
     <script src="./src/js/accent.js" defer></script>
-    <script src="./src/js/step.js" defer></script>
-    <script src="./src/js/data.js" defer></script>
-    <script src="./src/js/check.js" defer></script>
+    <script src="src/js/step.js" defer></script>
+    <script src="src/js/data.js" defer></script>
   </body>
 </html>
