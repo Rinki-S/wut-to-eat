@@ -22,7 +22,7 @@
   <body id="body" class="ml-[10vw] mr-[10vw] h-fit">
     <div
       id="stepIndicator"
-      class="tarnsform fixed left-0 top-1/2 ml-5 flex -translate-y-1/2 flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
+      class="fixed left-0 top-1/2 ml-5 flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
     >
       <div
         id="stepIndicatorDotOne"
@@ -80,9 +80,9 @@
                   id="hs-radio-random"
                   name="hs-radio-with-description"
                   type="radio"
+                  onclick="changeRadioChecked('hs-radio-random')"
                   class="primary rounded-full border-gray-200 text-blue-600 focus:ring-blue-500"
                   aria-describedby="hs-radio-delete-description"
-                  checked=""
                 />
               </div>
               <label for="hs-radio-random" class="ms-3">
@@ -102,6 +102,7 @@
                   id="hs-radio-filter"
                   name="hs-radio-with-description"
                   type="radio"
+                  onclick="changeRadioChecked('hs-radio-filter')"
                   class="rounded-full border-gray-200 text-blue-600 focus:ring-blue-500"
                   aria-describedby="hs-radio-archive-description"
                 />
@@ -122,7 +123,7 @@
             <button
               id="selectionStepOneNext"
               type="button"
-              onclick="showSelection('selectionStepOneNext', 'selectionStepFilter'); stepSwitch(3);"
+              onclick="showSelection('selectionStepOneNext', 'selectionStepRandomResult'); stepSwitch(3);"
               class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-right"></i>
@@ -134,12 +135,17 @@
       <div id="selectionStepRandomResult" class="hidden">
         <div
           class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
-        ></div>
+        >
+          <div class="space-y-2">
+            <h2 class="text-2xl font-semibold text-gray-800">随机结果</h2>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./node_modules/preline/dist/preline.js"></script>
     <script src="./src/js/accent.js" defer></script>
     <script src="./src/js/step.js" defer></script>
     <script src="./src/js/data.js" defer></script>
+    <script src="./src/js/check.js" defer></script>
   </body>
 </html>

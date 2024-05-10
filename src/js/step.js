@@ -19,3 +19,22 @@ function showSelection(buttonID, targetID) {
   target.scrollIntoView({ behavior: 'smooth', block: 'center' });
   button.disabled = true;
 }
+
+function stepOneSelection(radioID) {
+  const range = document.getElementById(radioID);
+  let radios = range.querySelectorAll('input[type="radio"]');
+  for (let radio of radios) {
+    if (radio.id === 'hs-radio-random') {
+      if (radio.checked === true) {
+        showSelection('selectionStepOneNext', 'stepOneSelection');
+        break;
+      }
+    } else {
+      if (radio.checked === true) {
+        showSelection('selectionStepOneNext', 'selectionRandomResult');
+        break;
+      }
+    }
+  }
+  stepSwitch(3);
+}
