@@ -28,6 +28,16 @@ function appendRandomRestaurant(targetTable) {
   headers.forEach((header) => {
     let th = document.createElement('th');
     th.textContent = header;
+    th.scope = 'col';
+    th.classList.add(
+      'px-6',
+      'py-3',
+      'text-start',
+      'text-xs',
+      'font-medium',
+      'text-gray-500',
+      'uppercase'
+    );
     tr.appendChild(th);
   });
   thead.appendChild(tr);
