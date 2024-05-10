@@ -1,14 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["index.html", "./src/**/*.js"],
+  content: ['index.html', './src/**/*.js', 'node_modules/preline/dist/*.js'],
   theme: {
     extend: {
+      colors: {},
       fontFamily: {
-        sans: ['"Inter"', "sans-serif"],
-        serif: ['"Playfair Display"', "serif"],
-        satoshi: ['"Satoshi"', "sans-serif"],
+        inter: ['"Inter"', '"Noto Sans SC"', 'sans-serif'],
+        sans: ['"Satoshi"', '"Noto Sans SC"', 'sans-serif'],
+        noto: ['"Noto Sans SC"', 'sans-serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'), require('preline/plugin')],
 };
