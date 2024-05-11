@@ -1,4 +1,4 @@
-店名,地址,均价,品类
-Restaurant One,123 Main St,20.5,Italian
-Restaurant Two,456 Maple Ave,15.0,Chinese
-Restaurant Three,789 Oak Dr,25.0,Mexican
+店名,地址,均价,品类,下单途径
+Restaurant One,123 Main St,20.5,Italian,电话
+Restaurant Two,456 Maple Ave,15.0,Chinese,电话
+Restaurant Three,789 Oak Dr,25.0,Mexican,电话

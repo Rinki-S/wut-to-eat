@@ -19,9 +19,7 @@ fetch(
   })
   .catch((error) => console.error('Error:', error));
 
-function appendRandomRestaurant(targetTable) {
-  let randomIndex = Math.floor(Math.random() * restaurants.length);
-  let randomRestaurant = restaurants[randomIndex];
+function appendTableHeaders(targetTable) {
   let table = document.getElementById(targetTable);
   let thead = table.querySelector('thead');
   let tr = document.createElement('tr');
@@ -41,5 +39,38 @@ function appendRandomRestaurant(targetTable) {
     tr.appendChild(th);
   });
   thead.appendChild(tr);
+}
+
+function appendRandomRestaurant(targetTable) {
+  let randomIndex = Math.floor(Math.random() * restaurants.length);
+  let randomRestaurant = restaurants[randomIndex];
+  let table = document.getElementById(targetTable);
+  let tbody = table.querySelector('tbody');
+  let tr = document.createElement('tr');
+  let td = document.createElement('td');
+  for (let key in randomRestaurant) {
+    let td = document.createElement('td');
+    td.textContent = randomRestaurant[key];
+    if (key === 'Name') {
+      td.classList.add(
+        'whitespace-nowrap',
+        'px-6',
+        'py-4',
+        'text-sm',
+        'font-medium',
+        'text-gray-800'
+      );
+    } else {
+      td.classList.add(
+        'whitespace-nowrap',
+        'px-6',
+        'py-4',
+        'text-sm',
+        'text-gray-800'
+      );
+    }
+    tr.appendChild(td);
+  }
+  tbody.appendChild(tr);
   console.log(randomRestaurant);
 }

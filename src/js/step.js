@@ -25,6 +25,7 @@ function stepOneSelection(radioID) {
   let selectedRadio = radio.querySelector('input:checked');
   if (selectedRadio.value === 'random') {
     showSelection('selectionStepOneNext', 'selectionStepRandomResult');
+    appendTableHeaders('stepRandomTable');
     appendRandomRestaurant('stepRandomTable');
   } else {
     showSelection('selectionStepOneNext', 'selectionStepFilter');
