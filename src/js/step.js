@@ -49,6 +49,11 @@ function changeDisplayBlockForward(targetID) {
     if (target.classList.contains('hidden')) {
       target.classList.remove('hidden');
       target.classList.add('slide-in-from-bottom');
+      target.addEventListener(
+        'animationend',
+        () => target.classList.remove('slide-in-from-bottom'),
+        { once: true }
+      );
     }
   });
 }
@@ -75,19 +80,24 @@ function changeDisplayBlockBackward(targetID) {
       }
     });
   });
-  Promise.all(promises).then(() => {
-    if (target.parentElement.classList.contains('hidden')) {
-      target.parentElement.classList.remove('hidden');
-    }
-    if (target.classList.contains('hidden')) {
-      target.classList.remove('hidden');
-      target.addEventListener(
-        'animationend', 
-        () => target.classList.remove('slide-in-from-top'), 
-        { once: true }
-      );
-    }
-  }).catch(error => console.error('Error during backward transition:', error));
+  Promise.all(promises)
+    .then(() => {
+      if (target.parentElement.classList.contains('hidden')) {
+        target.parentElement.classList.remove('hidden');
+      }
+      if (target.classList.contains('hidden')) {
+        target.classList.remove('hidden');
+        target.classList.add('slide-in-from-top');
+        target.addEventListener(
+          'animationend',
+          () => target.classList.remove('slide-in-from-top'),
+          { once: true }
+        );
+      }
+    })
+    .catch((error) =>
+      console.error('Error during backward transition:', error)
+    );
 }
 
 function stepOneSelection(radioID) {
