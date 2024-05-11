@@ -81,9 +81,13 @@ function changeDisplayBlockBackward(targetID) {
     }
     if (target.classList.contains('hidden')) {
       target.classList.remove('hidden');
-      target.classList.add('slide-in-from-top');
+      target.addEventListener(
+        'animationend', 
+        () => target.classList.remove('slide-in-from-top'), 
+        { once: true }
+      );
     }
-  });
+  }).catch(error => console.error('Error during backward transition:', error));
 }
 
 function stepOneSelection(radioID) {
