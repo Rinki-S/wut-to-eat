@@ -73,3 +73,12 @@ function appendRandomRestaurant(targetTable) {
   tbody.appendChild(tr);
   console.log(randomRestaurant);
 }
+
+function clearTableContent(tableID) {
+  console.log('clearTableContent');
+  let table = document.getElementById(tableID);
+  let thead = table.querySelector('thead');
+  let tbody = table.querySelector('tbody');
+  tbody.innerHTML = '';
+  thead.innerHTML = '';
+}

@@ -105,6 +105,7 @@ function stepOneSelection(radioID) {
   let selectedRadio = radio.querySelector('input:checked');
   if (selectedRadio.value === 'random') {
     changeDisplayBlockForward('selectionBlockStepRandomResult');
+    clearTableContent('stepRandomTable');
     appendTableHeaders('stepRandomTable');
     appendRandomRestaurant('stepRandomTable');
   } else {
