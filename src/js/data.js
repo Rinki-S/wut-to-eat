@@ -47,7 +47,6 @@ function appendRandomRestaurant(targetTable) {
   let table = document.getElementById(targetTable);
   let tbody = table.querySelector('tbody');
   let tr = document.createElement('tr');
-  let td = document.createElement('td');
   for (let key in randomRestaurant) {
     let td = document.createElement('td');
     td.textContent = randomRestaurant[key];

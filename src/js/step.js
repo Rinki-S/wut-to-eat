@@ -20,11 +20,77 @@ function showSelection(buttonID, targetID) {
   button.disabled = true;
 }
 
+function changeDisplayBlockForward(targetID) {
+  console.log('changeDisplayBlockForward');
+  const target = document.getElementById(targetID);
+  const all = Array.from(document.querySelectorAll('*[id^="selectionBlock"]'));
+  let promises = all.map((element) => {
+    return new Promise((resolve) => {
+      if (!element.classList.contains('hidden')) {
+        element.classList.add('slide-out-to-top');
+        element.addEventListener(
+          'animationend',
+          function () {
+            element.classList.add('hidden');
+            element.classList.remove('slide-out-to-top');
+            resolve();
+          },
+          { once: true }
+        );
+      } else {
+        resolve();
+      }
+    });
+  });
+  Promise.all(promises).then(() => {
+    if (target.parentElement.classList.contains('hidden')) {
+      target.parentElement.classList.remove('hidden');
+    }
+    if (target.classList.contains('hidden')) {
+      target.classList.remove('hidden');
+      target.classList.add('slide-in-from-bottom');
+    }
+  });
+}
+
+function changeDisplayBlockBackward(targetID) {
+  console.log('changeDisplayBlockBackward');
+  const target = document.getElementById(targetID);
+  const all = Array.from(document.querySelectorAll('*[id^="selectionBlock"]'));
+  let promises = all.map((element) => {
+    return new Promise((resolve) => {
+      if (!element.classList.contains('hidden')) {
+        element.classList.add('slide-out-to-bottom');
+        element.addEventListener(
+          'animationend',
+          function () {
+            element.classList.add('hidden');
+            element.classList.remove('slide-out-to-bottom');
+            resolve();
+          },
+          { once: true }
+        );
+      } else {
+        resolve();
+      }
+    });
+  });
+  Promise.all(promises).then(() => {
+    if (target.parentElement.classList.contains('hidden')) {
+      target.parentElement.classList.remove('hidden');
+    }
+    if (target.classList.contains('hidden')) {
+      target.classList.remove('hidden');
+      target.classList.add('slide-in-from-top');
+    }
+  });
+}
+
 function stepOneSelection(radioID) {
   let radio = document.getElementById(radioID);
   let selectedRadio = radio.querySelector('input:checked');
   if (selectedRadio.value === 'random') {
-    showSelection('selectionStepOneNext', 'selectionStepRandomResult');
+    changeDisplayBlockForward('selectionBlockStepRandomResult');
     appendTableHeaders('stepRandomTable');
     appendRandomRestaurant('stepRandomTable');
   } else {
