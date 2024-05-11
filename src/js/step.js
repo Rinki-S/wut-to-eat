@@ -113,3 +113,22 @@ function stepOneSelection(radioID) {
   }
   stepSwitch(3);
 }
+
+function tryAgain() {
+  // 重置单选按钮
+  let radio = document.getElementById(radioID);
+  let selectedRadio = radio.querySelector('input:checked');
+  if (selectedRadio) {
+    selectedRadio.checked = false;
+  }
+
+  // 隐藏所有可能被显示的元素
+  changeDisplayBlockBackward('selectionBlockStepRandomResult');
+  changeDisplayBlockBackward('selectionBlockStepFilter');
+
+  // 清除可能生成的表格内容
+  clearTableContent('stepRandomTable');
+
+  // 切换到第一步
+  stepSwitch(1);
+}
