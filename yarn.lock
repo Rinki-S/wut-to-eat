@@ -82,6 +82,11 @@
   resolved "https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
+"@preline/select@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/@preline/select/-/select-2.1.0.tgz#45ed22984d43ddbb110b8c8d5255489e82dc2120"
+  integrity sha512-Uz2leXyz9R/WJXB/p/fm3cyZraWzNa1xyOkYKlxMXo/v+miNxgHQbmjRfO4CeIsrDlDigd4dxYoH4O9OjdN7YQ==
+
 "@tailwindcss/forms@^0.5.7":
   version "0.5.7"
   resolved "https://registry.npmmirror.com/@tailwindcss/forms/-/forms-0.5.7.tgz#db5421f062a757b5f828bc9286ba626c6685e821"

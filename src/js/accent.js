@@ -35,7 +35,7 @@ function changeDisplay() {
   const primaryElements = document.getElementsByClassName('primary');
 
   for (let element of primaryElements) {
-    if (element.type === 'radio') {
+    if (element.type === 'radio' || element.type === 'checkbox') {
       element.classList.add(...radioAccentColorClass);
     } else {
       element.classList.add(...accentColorClass);

@@ -94,7 +94,7 @@ function stepOneSelection(radioID) {
     appendTableHeaders('stepRandomTable');
     appendRandomRestaurant('stepRandomTable');
   } else {
-    showSelection('selectionStepOneNext', 'selectionStepFilter');
+    changeDisplayBlockForward('selectionBlockStepFilter');
   }
   stepSwitch(3);
 }
