@@ -249,25 +249,18 @@
             >
               <i class="ph ph-arrow-left"></i>
               返回上一步
-            </button>
-          </span>
+          </button>  
+        <!-- 新增的“再来一次随机结果”按钮 -->  
+          <button  
+            id="generateRandomAgain"  
+            type="button"  
+            onclick="generateRandomRestaurantsAndShow();"  
+            class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm"  
+          >  
+            再来一次随机结果  
+          </button>  
+        </span> 
           <!-- ^^^^^^^^^^ Random Result Confirm Button End ^^^^^^^^^^ -->
-
-          
-          <!-- ^^^^^^^^^^ Random Result Reset Button Start ^^^^^^^^^^ -->
-          <button
-            id="selectionStepRandomResultReset"
-            type="button"
-            onclick="tryAgain();"
-            class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
-          >
-            <i class="ph ph-refresh"></i>
-            再试一次
-          </button>
-          <!-- vvvvvvvvvv Random Result Reset Button End vvvvvvvvvv -->
-
-
-
         </div>
         <!-- vvvvvvvvvv Step Random Result Content End vvvvvvvvvv -->
       </div>
