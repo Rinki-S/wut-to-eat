@@ -108,13 +108,14 @@ function stepOneSelection(radioID) {
     clearTableContent('stepRandomTable');
     appendTableHeaders('stepRandomTable');
     appendRandomRestaurant('stepRandomTable');
+    stepSwitch(4);
   } else {
     changeDisplayBlockForward('selectionBlockStepFilter');
+    stepSwitch(3);
   }
-  stepSwitch(3);
 }
-function generateRandomRestaurantsAndShow() {   
-  var tbody = document.querySelector('#stepRandomTable tbody');  
-  tbody.innerHTML = '';    
+function generateRandomRestaurantsAndShow() {
+  var tbody = document.querySelector('#stepRandomTable tbody');
+  tbody.innerHTML = '';
   appendRandomRestaurant('stepRandomTable');
-} 
+}

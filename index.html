@@ -18,32 +18,39 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.js"></script>
     <title>WIP</title>
   </head>
   <body id="body" class="ml-[10vw] mr-[10vw] flex h-dvh items-center">
     <!-- ^^^^^^^^^^ Step Indicator Start ^^^^^^^^^^ -->
     <div
       id="stepIndicator"
-      class="fixed left-0 top-1/2 ml-5 flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out sm:ml-2"
+      class="fixed left-2 top-1/2 flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
     >
       <div
         id="stepIndicatorDotOne"
-        class="step flex h-2 w-2 items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1"
+        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
       ></div>
       <div
         id="stepIndicatorDotTwo"
-        class="step flex h-2 w-2 items-center justify-center rounded-full bg-gray-300 transition"
+        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
       ></div>
       <div
         id="stepIndicatorDotThree"
-        class="step flex h-2 w-2 items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1"
+        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
       ></div>
       <div
         id="stepIndicatorDotFour"
-        class="step flex h-2 w-2 items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1"
+        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
       ></div>
     </div>
     <!-- vvvvvvvvvv Step Indicator End vvvvvvvvvv -->
+
+    <!-- ^^^^^^^^^^ Page Content Start ^^^^^^^^^^ -->
     <div class="flex flex-col items-start">
       <!-- ^^^^^^^^^^ Step Zero Start ^^^^^^^^^^ -->
       <div id="selectionBlockStepZero" class="">
@@ -75,6 +82,7 @@
         <!-- vvvvvvvvvv Start Button End vvvvvvvvvv -->
       </div>
       <!-- vvvvvvvvvv Step Zero End vvvvvvvvvv -->
+
       <!-- ^^^^^^^^^^ Step One Start ^^^^^^^^^^ -->
       <div id="selectionBlockStepOne" class="hidden">
         <!-- ^^^^^^^^^^ Step One Content Start ^^^^^^^^^^ -->
@@ -146,6 +154,7 @@
         <!-- vvvvvvvvvv Step One Content End vvvvvvvvvv -->
       </div>
       <!-- vvvvvvvvvv Step One End vvvvvvvvvv -->
+
       <!-- ^^^^^^^^^^ Step Filter Start ^^^^^^^^^^ -->
       <div id="selectionBlockStepFilter" class="hidden">
         <div
@@ -154,65 +163,134 @@
           <div>
             <h2 class="text-xl font-semibold text-gray-800">Filter</h2>
           </div>
-          <!-- ^^^^^^^^^^ Cuisine Dropbox Start ^^^^^^^^^^ -->
-          <div
-            class="hs-dropdown hs-dropdown-cuisine relative inline-flex [--auto-close:inside]"
-          >
+          <!-- ^^^^^^^^^^ Cuisine Collapse Start ^^^^^^^^^^ -->
+          <div>
             <button
-              id="hs-dropdown-cuisine"
               type="button"
-              class="hs-dropdown-toggle inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
+              class="primary hs-collapse-toggle inline-flex items-center gap-x-2 text-base font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+              id="hs-collapse-cuisine"
+              data-hs-collapse="#hs-collapse-cuisine-heading"
             >
               品类
-              <i class="ph ph-caret-down"></i>
+              <i class="ph-bold ph-caret-down"></i>
             </button>
             <div
-              id="hs-dropdown-cuisine-menu"
-              class="hs-dropdown-menu duration z-10 mt-2 hidden w-56 min-w-60 space-y-2 rounded-lg bg-white p-4 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
-              aria-labelledby="hs-dropdown-cuisine"
+              id="hs-collapse-cuisine-heading"
+              class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
+              aria-labelledby="hs-collapse-cuisine"
             >
-              <div class="flex">
-                <input
-                  type="checkbox"
-                  class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                  id="hs-default-checkbox"
-                  value="Italian"
-                />
-                <label
-                  for="hs-default-checkbox"
-                  class="ms-3 text-sm text-gray-500"
-                  >Italian</label
-                >
-              </div>
-              <div class="flex">
-                <input
-                  type="checkbox"
-                  class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                  id="hs-checked-checkbox"
-                  checked=""
-                  value="Chinese"
-                />
-                <label
-                  for="hs-checked-checkbox"
-                  class="ms-3 text-sm text-gray-500"
-                  >Chinese</label
-                >
+              <div class="mt-2">
+                <div class="grid gap-2 sm:grid-cols-2">
+                  <label
+                    for="hs-checkbox-cuisine-fastfood"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-fastfood"
+                      value="快餐"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">快餐</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-noodles"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-noodles"
+                      value="面条"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">面条</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-custom"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-custom"
+                      value="自选"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">自选</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-dishes"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-dishes"
+                      value="小碗菜"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">小碗菜</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-sichuan"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-sichuan"
+                      value="川菜"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">川菜</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-canton"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-canton"
+                      value="粤菜"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">粤菜</span>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-          <!-- vvvvvvvvvv Cuisine Dropbox End vvvvvvvvvv -->
+          <!-- vvvvvvvvvv Cuisine Collapse End vvvvvvvvvv -->
+          <div>
+            <button
+              type="button"
+              class="primary hs-collapse-toggle inline-flex items-center gap-x-2 text-base font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+              id="hs-collapse-price"
+              data-hs-collapse="#hs-collapse-price-heading"
+            >
+              价格区间
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div
+              id="hs-collapse-price-heading"
+              class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
+              aria-labelledby="hs-price-cuisine"
+            >
+              <div class="mt-8 h-10">
+                <div id="slider-round" class="slider-styled"></div>
+              </div>
+            </div>
+          </div>
+          <button
+            id="selectionStepFilterTestButton"
+            type="button"
+            onclick="getCheckboxes('hs-collapse-cuisine-heading');"
+            class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+          >
+            <i class="ph ph-arrow-left"></i>
+            Get dropbox result
+          </button>
         </div>
-        <button
-          id="selectionStepFilterTestButton"
-          type="button"
-          onclick="getCheckboxes('hs-dropdown-cuisine-menu');"
-          class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
-        >
-          <i class="ph ph-arrow-left"></i>
-          Get dropbox result
-        </button>
       </div>
       <!-- vvvvvvvvvv Step Filter End vvvvvvvvvv -->
+
       <!-- ^^^^^^^^^^ Step Random Result Start ^^^^^^^^^^ -->
       <div id="selectionBlockStepRandomResult" class="hidden">
         <!-- ^^^^^^^^^^ Step Random Result Content Start ^^^^^^^^^^ -->
@@ -240,36 +318,44 @@
           </div>
           <!-- vvvvvvvvvv Random Result Table End vvvvvvvvvv -->
           <!-- ^^^^^^^^^^ Random Result Confirm Button Start ^^^^^^^^^^ -->
-          <span class="mb-2 ml-2 space-x-4">
+          <span
+            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
+          >
             <button
               id="selectionStepRandomResultNext"
               type="button"
               onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-left"></i>
               返回上一步
-          </button>  
-        <!-- 新增的“再来一次随机结果”按钮 -->  
-          <button  
-            id="generateRandomAgain"  
-            type="button"  
-            onclick="generateRandomRestaurantsAndShow();"  
-            class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm"  
-          >  
-            再来一次随机结果  
-          </button>  
-        </span> 
+            </button>
+            <!-- 新增的“再来一次随机结果”按钮 -->
+            <button
+              id="generateRandomAgain"
+              type="button"
+              onclick="generateRandomRestaurantsAndShow();"
+              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-repeat"></i>
+              再来一次随机结果
+            </button>
+          </span>
           <!-- ^^^^^^^^^^ Random Result Confirm Button End ^^^^^^^^^^ -->
         </div>
         <!-- vvvvvvvvvv Step Random Result Content End vvvvvvvvvv -->
       </div>
       <!-- vvvvvvvvvv Step Random Result End vvvvvvvvvv -->
     </div>
+    <!-- vvvvvvvvvv Page Content End vvvvvvvvvv -->
+
+    <!-- ^^^^^^^^^^ Scripts Start ^^^^^^^^^^ -->
     <script src="./node_modules/preline/dist/preline.js"></script>
     <script src="./src/js/accent.js" defer></script>
     <script src="src/js/step.js" defer></script>
     <script src="src/js/data.js" defer></script>
     <script src="src/js/checkboxes.js" defer></script>
+    <script src="src/js/range_slider.js" defer></script>
+    <!-- vvvvvvvvvv Scripts End vvvvvvvvvv -->
   </body>
 </html>

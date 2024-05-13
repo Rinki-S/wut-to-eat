@@ -1,4 +1,11 @@
-店名,地址,均价,品类,下单途径
-Restaurant One,123 Main St,20.5,Italian,电话
-Restaurant Two,456 Maple Ave,15.0,Chinese,电话
-Restaurant Three,789 Oak Dr,25.0,Mexican,电话
+店名,地址,楼层,均价,品类,下单途径
+Restaurant One,智园食堂,2F,20.5,快餐,仅到店点单
+Restaurant Two,慧园食堂,1F,15.0,面条,可外卖点单
+Restaurant Three,越园食堂,2F,25.0,自选,可外卖点单
+Restaurant Four,智园食堂,1F,18.0,小碗菜,可外卖点单
+Restaurant Five,智园食堂,2F,30.0,快餐,仅到店点单
+Restaurant Six,智园食堂,1F,12.5,面条,可外卖点单
+Restaurant Seven,慧园食堂,2F,22.0,自选,可外卖点单
+Restaurant Eight,慧园食堂,1F,28.0,小碗菜,仅到店点单
+Restaurant Nine,慧园食堂,2F,17.5,川菜,可外卖点单
+Restaurant Ten,越园食堂,1F,14.0,粤菜,可外卖点单

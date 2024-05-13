@@ -61,3 +61,29 @@
 .slide-out-to-bottom {
   animation: slide-out-to-bottom 0.7s cubic-bezier(0.46, 0.05, 0.51, 0.9);
 }
+
+#slider-round {
+  height: 10px;
+}
+
+#slider-round .noUi-connect {
+  background: #3f89af;
+}
+
+#slider-round .noUi-target {
+  box-shadow: none;
+}
+
+#slider-round .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+  box-shadow: none;
+}
+
+#slider-round .noUi-handle:before,
+#slider-round .noUi-handle:after {
+  display: none;
+}
