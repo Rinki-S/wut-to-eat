@@ -8,19 +8,19 @@ let collapseToggleAccentColorClass;
 let connectAccentColorClass;
 const hour = new Date().getHours();
 if (hour < 10) {
-  accentColorClass = ['bg-yellow-600', 'hover:bg-yellow-700'];
-  radioAccentColorClass = ['text-yellow-600', 'focus:ring-yellow-700'];
-  collapseToggleAccentColorClass = ['text-yellow-700', 'hover:text-yellow-800'];
+  accentColorClass = ['bg-yellow-500', 'hover:bg-yellow-600'];
+  radioAccentColorClass = ['text-yellow-500', 'focus:ring-yellow-600'];
+  collapseToggleAccentColorClass = ['text-yellow-500', 'hover:text-yellow-700'];
   connectAccentColorClass = '#f59e0b';
 } else if (hour < 16) {
-  accentColorClass = ['bg-red-600', 'hover:bg-red-700'];
-  radioAccentColorClass = ['text-red-600', 'focus:ring-red-700'];
-  collapseToggleAccentColorClass = ['text-red-600', 'hover:text-red-800'];
+  accentColorClass = ['bg-red-500', 'hover:bg-red-600'];
+  radioAccentColorClass = ['text-red-500', 'focus:ring-red-600'];
+  collapseToggleAccentColorClass = ['text-red-600', 'hover:text-red-700'];
   connectAccentColorClass = '#ef4444';
 } else {
-  accentColorClass = ['bg-indigo-600', 'hover:bg-indigo-700'];
-  radioAccentColorClass = ['text-indigo-600', 'focus:ring-indigo-700'];
-  collapseToggleAccentColorClass = ['text-indigo-600', 'hover:text-indigo-800'];
+  accentColorClass = ['bg-indigo-500', 'hover:bg-indigo-600'];
+  radioAccentColorClass = ['text-indigo-500', 'focus:ring-indigo-600'];
+  collapseToggleAccentColorClass = ['text-indigo-500', 'hover:text-indigo-700'];
   connectAccentColorClass = '#6366f1';
 }
 

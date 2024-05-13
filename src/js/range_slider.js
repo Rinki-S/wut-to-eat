@@ -1,5 +1,4 @@
 var slider = document.getElementById('slider-round');
-var valuesForSlider = [0, 10, 20, 30, 40, 50];
 
 noUiSlider.create(slider, {
   start: [10, 30],
@@ -12,6 +11,15 @@ noUiSlider.create(slider, {
   tooltips: true,
 });
 
-slider.noUiSlider.on('update', function (values, handle) {
-  console.log('Range selected: ' + values[0] + ' to ' + values[1]);
-});
+function getRangeSlider(sliderID) {
+  const slider = document.getElementById(sliderID);
+  let rangeSliderValues = slider.noUiSlider.get();
+  //   console.log(
+  //     'Range selected: ' + rangeSliderValues[0] + ' to ' + rangeSliderValues[1]
+  //   );
+  return rangeSliderValues;
+}
+
+// slider.noUiSlider.on('update', function (values, handle) {
+//   console.log('Range selected: ' + values[0] + ' to ' + values[1]);
+// });

@@ -47,6 +47,10 @@
         id="stepIndicatorDotFour"
         class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
       ></div>
+      <div
+        id="stepIndicatorDotFive"
+        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+      ></div>
     </div>
     <!-- vvvvvvvvvv Step Indicator End vvvvvvvvvv -->
 
@@ -161,7 +165,7 @@
           class="flex w-[80vw] flex-col space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
         >
           <div>
-            <h2 class="text-xl font-semibold text-gray-800">Filter</h2>
+            <h2 class="text-xl font-semibold text-gray-800">条件筛选</h2>
           </div>
           <!-- ^^^^^^^^^^ Cuisine Collapse Start ^^^^^^^^^^ -->
           <div>
@@ -190,6 +194,7 @@
                       class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                       id="hs-checkbox-cuisine-fastfood"
                       value="快餐"
+                      checked=""
                     />
                     <span class="ms-3 text-sm text-gray-800">快餐</span>
                   </label>
@@ -258,6 +263,7 @@
             </div>
           </div>
           <!-- vvvvvvvvvv Cuisine Collapse End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Price Range Start ^^^^^^^^^^ -->
           <div>
             <button
               type="button"
@@ -273,20 +279,96 @@
               class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
               aria-labelledby="hs-price-cuisine"
             >
-              <div class="mt-8 h-10">
+              <div class="mb-2 mt-10">
                 <div id="slider-round" class="slider-styled"></div>
               </div>
             </div>
           </div>
-          <button
-            id="selectionStepFilterTestButton"
-            type="button"
-            onclick="getCheckboxes('hs-collapse-cuisine-heading');"
-            class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+          <!-- vvvvvvvvvv Price Range End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Position Select Start ^^^^^^^^^^ -->
+          <div>
+            <button
+              type="button"
+              class="primary hs-collapse-toggle inline-flex items-center gap-x-2 text-base font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+              id="hs-collapse-where"
+              data-hs-collapse="#hs-collapse-where-heading"
+            >
+              地址
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div
+              id="hs-collapse-where-heading"
+              class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
+              aria-labelledby="hs-collapse-where"
+            >
+              <div class="mt-2">
+                <div class="grid gap-2 sm:grid-cols-2">
+                  <label
+                    for="hs-checkbox-cuisine-zhiyuan"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-zhiyuan"
+                      value="智园食堂"
+                      checked=""
+                    />
+                    <span class="ms-3 text-sm text-gray-800">智园食堂</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-huiyuan"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-huiyuan"
+                      value="面条"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">慧园食堂</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-cuisine-yueyuan"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-cuisine-yueyuan"
+                      value="越园食堂"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">越园食堂</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- vvvvvvvvvv Position Select End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Filter Confirm Button Start ^^^^^^^^^^ -->
+          <span
+            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
           >
-            <i class="ph ph-arrow-left"></i>
-            Get dropbox result
-          </button>
+            <button
+              id="selectionStepFilterBack"
+              type="button"
+              onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
+              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-arrow-left"></i>
+              返回上一步
+            </button>
+            <button
+              id="selectionStepFilterToResult"
+              type="button"
+              onclick="changeDisplayBlockForward('selectionBlockStepFilterResult'); showFilterResultTable('stepFilterTable'); stepSwitch(4);"
+              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-arrow-right"></i>
+              查看筛选结果
+            </button>
+          </span>
+          <!-- vvvvvvvvvv Filter Confirm Button End vvvvvvvvvv -->
         </div>
       </div>
       <!-- vvvvvvvvvv Step Filter End vvvvvvvvvv -->
@@ -330,7 +412,6 @@
               <i class="ph ph-arrow-left"></i>
               返回上一步
             </button>
-            <!-- 新增的“再来一次随机结果”按钮 -->
             <button
               id="generateRandomAgain"
               type="button"
@@ -340,12 +421,114 @@
               <i class="ph ph-repeat"></i>
               再来一次随机结果
             </button>
+            <button
+              id="selectionStepFilterTestButton"
+              type="button"
+              onclick="changeDisplayBlockForward('selectionBlockStepBonAppetit'); stepSwitch(5);"
+              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-bowl-food"></i>
+              出发！
+            </button>
           </span>
           <!-- ^^^^^^^^^^ Random Result Confirm Button End ^^^^^^^^^^ -->
         </div>
         <!-- vvvvvvvvvv Step Random Result Content End vvvvvvvvvv -->
       </div>
       <!-- vvvvvvvvvv Step Random Result End vvvvvvvvvv -->
+
+      <!-- ^^^^^^^^^^ Step Filter Result Start ^^^^^^^^^^ -->
+      <div id="selectionBlockStepFilterResult" class="hidden">
+        <!-- ^^^^^^^^^^ Step Filter Result Content Start ^^^^^^^^^^ -->
+        <div
+          class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
+        >
+          <div class="space-y-2">
+            <h2 class="text-xl font-semibold text-gray-800">你可以吃...</h2>
+          </div>
+          <!-- ^^^^^^^^^^ Filter Result Table Start ^^^^^^^^^^ -->
+          <div class="mt-2 flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+              <div class="inline-block min-w-full p-1.5 align-middle">
+                <div class="overflow-hidden">
+                  <table
+                    id="stepFilterTable"
+                    class="min-w-full divide-y divide-gray-200"
+                  >
+                    <thead></thead>
+                    <tbody class="divide-y divide-gray-200"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- vvvvvvvvvv Filter Result Table End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Filter Result Confirm Button Start ^^^^^^^^^^ -->
+          <span
+            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
+          >
+            <button
+              id="selectionStepFilterResultNext"
+              type="button"
+              onclick="changeDisplayBlockBackward('selectionBlockStepFilter'); stepSwitch(3);"
+              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-arrow-left"></i>
+              返回上一步
+            </button>
+            <button
+              id="selectionStepFilterTestButton"
+              type="button"
+              onclick="changeDisplayBlockForward('selectionBlockStepBonAppetit'); stepSwitch(5);"
+              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-bowl-food"></i>
+              出发！
+            </button>
+          </span>
+        </div>
+      </div>
+      <!-- vvvvvvvvvv Step Filter Result End vvvvvvvvvv -->
+
+      <!-- ^^^^^^^^^^ Step Bon Appetit Start ^^^^^^^^^^ -->
+      <div id="selectionBlockStepBonAppetit" class="hidden">
+        <!-- ^^^^^^^^^^ Step Bon Appetit Content Start ^^^^^^^^^^ -->
+        <div
+          class="flex w-[80vw] flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
+        >
+          <div
+            class="mb-4 mt-4 flex w-full flex-col items-center justify-items-center space-y-2"
+          >
+            <h2 class="text-4xl font-semibold text-gray-800">Bon Appétit!</h2>
+            <p class="text-2xl text-gray-600">请享用您的美食!</p>
+          </div>
+          <!-- ^^^^^^^^^^ Bon Appetit Confirm Button Start ^^^^^^^^^^ -->
+          <span
+            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
+          >
+            <button
+              id="selectionStepBonAppetitNext"
+              type="button"
+              onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
+              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-arrow-left"></i>
+              返回功能选择
+            </button>
+            <button
+              id="selectionStepBonAppetitToStart"
+              type="button"
+              onclick="changeDisplayBlockForward('selectionBlockStepZero'); stepSwitch(1);"
+              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-house"></i>
+              返回开始
+            </button>
+          </span>
+          <!-- vvvvvvvvvv Bon Appetit Confirm Button End vvvvvvvvvv -->
+        </div>
+        <!-- vvvvvvvvvv Step Bon Appetit Content End vvvvvvvvvv -->
+      </div>
     </div>
     <!-- vvvvvvvvvv Page Content End vvvvvvvvvv -->
 

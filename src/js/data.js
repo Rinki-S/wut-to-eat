@@ -82,3 +82,90 @@ function clearTableContent(tableID) {
   tbody.innerHTML = '';
   thead.innerHTML = '';
 }
+
+function showFilterResultTable(tableID) {
+  clearTableContent(tableID);
+  let table = document.getElementById(tableID);
+  appendTableHeaders(tableID);
+  let tbody = table.querySelector('tbody');
+  tbody.innerHTML = '';
+  let filteredRestaurants;
+  let checkedCuisines = getCheckboxes('hs-collapse-cuisine-heading');
+  console.log(
+    'CHECKED CUISINES: ' +
+      checkedCuisines.map((input) => input.value).join(', ')
+  );
+  let checkedPositions = getCheckboxes('hs-collapse-where-heading');
+  console.log(
+    'CHECKED POSITIONS: ' +
+      checkedPositions.map((input) => input.value).join(', ')
+  );
+  let priceRange = getRangeSlider('slider-round');
+  console.log('PRICE RANGE: ' + priceRange);
+  let minPrice = priceRange[0];
+  let maxPrice = priceRange[1];
+  filteredRestaurants = restaurants.filter((restaurant) => {
+    console.log(restaurant);
+    let cuisineMatch = checkedCuisines.some((cuisine) =>
+      restaurant['品类'].includes(cuisine.value)
+    );
+    let positionMatch = checkedPositions.some((position) =>
+      restaurant['地址'].includes(position.value)
+    );
+    let priceMatch =
+      restaurant['均价'] >= parseFloat(minPrice) &&
+      restaurant['均价'] <= parseFloat(maxPrice);
+    console.log(
+      'CUISINE MATCH ' +
+        cuisineMatch +
+        ' POSITION MATCH ' +
+        positionMatch +
+        ' PRICE MATCH ' +
+        priceMatch
+    );
+    return cuisineMatch && positionMatch && priceMatch;
+  });
+  if (filteredRestaurants.length === 0) {
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
+    td.textContent = '没有找到符合条件的餐厅';
+    td.colSpan = headers.length;
+    td.classList.add(
+      'whitespace-nowrap',
+      'px-6',
+      'py-4',
+      'text-sm',
+      'text-gray-800'
+    );
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    return;
+  }
+  filteredRestaurants.forEach((restaurant) => {
+    let tr = document.createElement('tr');
+    for (let key in restaurant) {
+      let td = document.createElement('td');
+      td.textContent = restaurant[key];
+      if (key === 'Name') {
+        td.classList.add(
+          'whitespace-nowrap',
+          'px-6',
+          'py-4',
+          'text-sm',
+          'font-medium',
+          'text-gray-800'
+        );
+      } else {
+        td.classList.add(
+          'whitespace-nowrap',
+          'px-6',
+          'py-4',
+          'text-sm',
+          'text-gray-800'
+        );
+      }
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  });
+}
