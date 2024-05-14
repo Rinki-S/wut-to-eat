@@ -186,17 +186,17 @@
               <div class="mt-2">
                 <div class="grid gap-2 sm:grid-cols-2">
                   <label
-                    for="hs-checkbox-cuisine-fastfood"
+                    for="hs-checkbox-cuisine-malatang"
                     class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
                   >
                     <input
                       type="checkbox"
                       class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                      id="hs-checkbox-cuisine-fastfood"
-                      value="快餐"
+                      id="hs-checkbox-cuisine-malatang"
+                      value="麻辣烫"
                       checked=""
                     />
-                    <span class="ms-3 text-sm text-gray-800">快餐</span>
+                    <span class="ms-3 text-sm text-gray-800">麻辣烫</span>
                   </label>
                   <label
                     for="hs-checkbox-cuisine-noodles"
@@ -206,33 +206,33 @@
                       type="checkbox"
                       class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                       id="hs-checkbox-cuisine-noodles"
-                      value="面条"
+                      value="面食"
                     />
-                    <span class="ms-3 text-sm text-gray-800">面条</span>
+                    <span class="ms-3 text-sm text-gray-800">面食</span>
                   </label>
                   <label
-                    for="hs-checkbox-cuisine-custom"
+                    for="hs-checkbox-cuisine-rice"
                     class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
                   >
                     <input
                       type="checkbox"
                       class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                      id="hs-checkbox-cuisine-custom"
-                      value="自选"
+                      id="hs-checkbox-cuisine-rice"
+                      value="米饭"
                     />
-                    <span class="ms-3 text-sm text-gray-800">自选</span>
+                    <span class="ms-3 text-sm text-gray-800">米饭</span>
                   </label>
                   <label
-                    for="hs-checkbox-cuisine-dishes"
+                    for="hs-checkbox-cuisine-breakfast"
                     class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
                   >
                     <input
                       type="checkbox"
                       class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                      id="hs-checkbox-cuisine-dishes"
-                      value="小碗菜"
+                      id="hs-checkbox-cuisine-breakfast"
+                      value="早餐"
                     />
-                    <span class="ms-3 text-sm text-gray-800">小碗菜</span>
+                    <span class="ms-3 text-sm text-gray-800">早餐</span>
                   </label>
                   <label
                     for="hs-checkbox-cuisine-sichuan"
@@ -345,6 +345,54 @@
             </div>
           </div>
           <!-- vvvvvvvvvv Position Select End vvvvvvvvvv -->
+          <!-- ^^^^^^^^^^ Order Method Select Start ^^^^^^^^^^-->
+          <div>
+            <button
+              type="button"
+              class="primary hs-collapse-toggle inline-flex items-center gap-x-2 text-base font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
+              id="hs-collapse-method"
+              data-hs-collapse="#hs-collapse-method-heading"
+            >
+              下单方式
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div
+              id="hs-collapse-method-heading"
+              class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300"
+              aria-labelledby="hs-collapse-method"
+            >
+              <div class="mt-2">
+                <div class="grid gap-2 sm:grid-cols-2">
+                  <label
+                    for="hs-checkbox-method-takeout"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-method-takeout"
+                      value="可外卖点单"
+                      checked=""
+                    />
+                    <span class="ms-3 text-sm text-gray-800">可外卖点单</span>
+                  </label>
+                  <label
+                    for="hs-checkbox-method-eatin"
+                    class="flex w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-blue-500 focus:ring-blue-500"
+                  >
+                    <input
+                      type="checkbox"
+                      class="primary mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                      id="hs-checkbox-method-eatin"
+                      value="仅到店点单"
+                    />
+                    <span class="ms-3 text-sm text-gray-800">仅到店点单</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- vvvvvvvvvv Order Method Select End vvvvvvvvvv-->
           <!-- ^^^^^^^^^^ Filter Confirm Button Start ^^^^^^^^^^ -->
           <span
             class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"

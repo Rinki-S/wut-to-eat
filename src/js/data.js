@@ -102,6 +102,10 @@ function showFilterResultTable(tableID) {
   );
   let priceRange = getRangeSlider('slider-round');
   console.log('PRICE RANGE: ' + priceRange);
+  let checkedMethods = getCheckboxes('hs-collapse-method-heading');
+  console.log(
+    'CHECKED METHODS: ' + checkedMethods.map((input) => input.value).join(', ')
+  );
   let minPrice = priceRange[0];
   let maxPrice = priceRange[1];
   filteredRestaurants = restaurants.filter((restaurant) => {
@@ -115,15 +119,20 @@ function showFilterResultTable(tableID) {
     let priceMatch =
       restaurant['均价'] >= parseFloat(minPrice) &&
       restaurant['均价'] <= parseFloat(maxPrice);
+    let methodMatch = checkedMethods.some((method) =>
+      restaurant['下单方式'].includes(method.value)
+    );
     console.log(
       'CUISINE MATCH ' +
         cuisineMatch +
         ' POSITION MATCH ' +
         positionMatch +
         ' PRICE MATCH ' +
-        priceMatch
+        priceMatch +
+        ' METHOD MATCH ' +
+        methodMatch
     );
-    return cuisineMatch && positionMatch && priceMatch;
+    return cuisineMatch && positionMatch && priceMatch && methodMatch;
   });
   if (filteredRestaurants.length === 0) {
     let tr = document.createElement('tr');
