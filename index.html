@@ -29,27 +29,27 @@
     <!-- ^^^^^^^^^^ Step Indicator Start ^^^^^^^^^^ -->
     <div
       id="stepIndicator"
-      class="fixed left-2 top-1/2 flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
+      class="fixed left-0 top-1/2 ml-[2vw] flex -translate-y-1/2 transform flex-col items-center space-y-2 transition-all duration-200 ease-in-out"
     >
       <div
         id="stepIndicatorDotOne"
-        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+        class="step flex h-1.5 w-1.5 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
       <div
         id="stepIndicatorDotTwo"
-        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+        class="step flex h-1.5 w-1.5 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
       <div
         id="stepIndicatorDotThree"
-        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+        class="step flex h-1.5 w-1.5 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
       <div
         id="stepIndicatorDotFour"
-        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+        class="step flex h-1.5 w-1.5 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
       <div
         id="stepIndicatorDotFive"
-        class="step flex items-center justify-center rounded-full bg-gray-300 transition sm:h-1 sm:w-1 md:h-2 md:w-2"
+        class="step flex h-1.5 w-1.5 items-center justify-center rounded-full bg-gray-300 transition"
       ></div>
     </div>
     <!-- vvvvvvvvvv Step Indicator End vvvvvvvvvv -->
@@ -142,7 +142,7 @@
           </div>
           <!-- vvvvvvvvvv Step One Radio End vvvvvvvvvv -->
           <!-- ^^^^^^^^^^ Step One Confirm Button Start ^^^^^^^^^^ -->
-          <span class="mb-2 ml-2 space-x-4">
+          <span class="flex w-fit flex-col gap-2 align-baseline sm:flex-row">
             <button
               id="selectionStepOneNext"
               type="button"
@@ -162,7 +162,7 @@
       <!-- ^^^^^^^^^^ Step Filter Start ^^^^^^^^^^ -->
       <div id="selectionBlockStepFilter" class="hidden">
         <div
-          class="flex w-[80vw] flex-col space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
+          class="flex max-h-[90vh] w-[80vw] flex-col space-y-4 overflow-auto rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-100 ease-in-out hover:shadow-lg md:p-5"
         >
           <div>
             <h2 class="text-xl font-semibold text-gray-800">条件筛选</h2>
@@ -394,14 +394,12 @@
           </div>
           <!-- vvvvvvvvvv Order Method Select End vvvvvvvvvv-->
           <!-- ^^^^^^^^^^ Filter Confirm Button Start ^^^^^^^^^^ -->
-          <span
-            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
-          >
+          <span class="flex w-fit flex-col gap-2 align-baseline sm:flex-row">
             <button
               id="selectionStepFilterBack"
               type="button"
               onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
-              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-left"></i>
               返回上一步
@@ -410,10 +408,10 @@
               id="selectionStepFilterToResult"
               type="button"
               onclick="changeDisplayBlockForward('selectionBlockStepFilterResult'); showFilterResultTable('stepFilterTable'); stepSwitch(4);"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-right"></i>
-              查看筛选结果
+              根据条件随机
             </button>
           </span>
           <!-- vvvvvvvvvv Filter Confirm Button End vvvvvvvvvv -->
@@ -448,14 +446,12 @@
           </div>
           <!-- vvvvvvvvvv Random Result Table End vvvvvvvvvv -->
           <!-- ^^^^^^^^^^ Random Result Confirm Button Start ^^^^^^^^^^ -->
-          <span
-            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
-          >
+          <span class="flex w-fit flex-col gap-2 align-baseline sm:flex-row">
             <button
               id="selectionStepRandomResultNext"
               type="button"
               onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
-              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-left"></i>
               返回上一步
@@ -464,7 +460,7 @@
               id="generateRandomAgain"
               type="button"
               onclick="generateRandomRestaurantsAndShow();"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-repeat"></i>
               再来一次随机结果
@@ -473,7 +469,7 @@
               id="selectionStepFilterTestButton"
               type="button"
               onclick="changeDisplayBlockForward('selectionBlockStepBonAppetit'); stepSwitch(5);"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-bowl-food"></i>
               出发！
@@ -512,23 +508,30 @@
           </div>
           <!-- vvvvvvvvvv Filter Result Table End vvvvvvvvvv -->
           <!-- ^^^^^^^^^^ Filter Result Confirm Button Start ^^^^^^^^^^ -->
-          <span
-            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
-          >
+          <span class="flex w-fit flex-col gap-2 align-baseline sm:flex-row">
             <button
               id="selectionStepFilterResultNext"
               type="button"
               onclick="changeDisplayBlockBackward('selectionBlockStepFilter'); stepSwitch(3);"
-              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-left"></i>
               返回上一步
             </button>
             <button
+              id="generateRandomAgain"
+              type="button"
+              onclick="showFilterResultTable('stepFilterTable');"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+            >
+              <i class="ph ph-repeat"></i>
+              再来一次随机结果
+            </button>
+            <button
               id="selectionStepFilterTestButton"
               type="button"
               onclick="changeDisplayBlockForward('selectionBlockStepBonAppetit'); stepSwitch(5);"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-bowl-food"></i>
               出发！
@@ -551,14 +554,12 @@
             <p class="text-2xl text-gray-600">请享用您的美食!</p>
           </div>
           <!-- ^^^^^^^^^^ Bon Appetit Confirm Button Start ^^^^^^^^^^ -->
-          <span
-            class="flex w-fit space-x-4 align-baseline sm:flex-col md:flex-row"
-          >
+          <span class="flex w-fit flex-col gap-2 align-baseline sm:flex-row">
             <button
               id="selectionStepBonAppetitNext"
               type="button"
               onclick="changeDisplayBlockBackward('selectionBlockStepOne'); stepSwitch(2);"
-              class="mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-arrow-left"></i>
               返回功能选择
@@ -567,7 +568,7 @@
               id="selectionStepBonAppetitToStart"
               type="button"
               onclick="changeDisplayBlockForward('selectionBlockStepZero'); stepSwitch(1);"
-              class="primary mt-4 inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
+              class="primary inline-flex w-fit items-center gap-x-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-normal text-white shadow-sm disabled:pointer-events-none disabled:opacity-50"
             >
               <i class="ph ph-house"></i>
               返回开始

@@ -19,6 +19,12 @@ fetch(
   })
   .catch((error) => console.error('Error:', error));
 
+function generateRandomRestaurantsAndShow() {
+  var tbody = document.querySelector('#stepRandomTable tbody');
+  tbody.innerHTML = '';
+  appendRandomRestaurant('stepRandomTable');
+}
+
 function appendTableHeaders(targetTable) {
   let table = document.getElementById(targetTable);
   let thead = table.querySelector('thead');
@@ -41,9 +47,13 @@ function appendTableHeaders(targetTable) {
   thead.appendChild(tr);
 }
 
+function generateRandomRestaurant(targetRestaurants) {
+  let randomIndex = Math.floor(Math.random() * targetRestaurants.length);
+  return targetRestaurants[randomIndex];
+}
+
 function appendRandomRestaurant(targetTable) {
-  let randomIndex = Math.floor(Math.random() * restaurants.length);
-  let randomRestaurant = restaurants[randomIndex];
+  let randomRestaurant = generateRandomRestaurant(restaurants);
   let table = document.getElementById(targetTable);
   let tbody = table.querySelector('tbody');
   let tr = document.createElement('tr');
@@ -150,31 +160,30 @@ function showFilterResultTable(tableID) {
     tbody.appendChild(tr);
     return;
   }
-  filteredRestaurants.forEach((restaurant) => {
-    let tr = document.createElement('tr');
-    for (let key in restaurant) {
-      let td = document.createElement('td');
-      td.textContent = restaurant[key];
-      if (key === 'Name') {
-        td.classList.add(
-          'whitespace-nowrap',
-          'px-6',
-          'py-4',
-          'text-sm',
-          'font-medium',
-          'text-gray-800'
-        );
-      } else {
-        td.classList.add(
-          'whitespace-nowrap',
-          'px-6',
-          'py-4',
-          'text-sm',
-          'text-gray-800'
-        );
-      }
-      tr.appendChild(td);
+  let finalRestaurant = generateRandomRestaurant(filteredRestaurants);
+  let tr = document.createElement('tr');
+  for (let key in finalRestaurant) {
+    let td = document.createElement('td');
+    td.textContent = finalRestaurant[key];
+    if (key === 'Name') {
+      td.classList.add(
+        'whitespace-nowrap',
+        'px-6',
+        'py-4',
+        'text-sm',
+        'font-medium',
+        'text-gray-800'
+      );
+    } else {
+      td.classList.add(
+        'whitespace-nowrap',
+        'px-6',
+        'py-4',
+        'text-sm',
+        'text-gray-800'
+      );
     }
-    tbody.appendChild(tr);
-  });
+    tr.appendChild(td);
+  }
+  tbody.appendChild(tr);
 }

@@ -114,9 +114,3 @@ function stepOneSelection(radioID) {
     stepSwitch(3);
   }
 }
-
-function generateRandomRestaurantsAndShow() {
-  var tbody = document.querySelector('#stepRandomTable tbody');
-  tbody.innerHTML = '';
-  appendRandomRestaurant('stepRandomTable');
-}
